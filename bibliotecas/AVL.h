@@ -1,36 +1,23 @@
-#ifndef DynamicActors_h
-#define DynamicActors_h
+#ifndef AVL_h
+#define AVL_h
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+#include "DynamicTitles.h"
 
 struct node;
-struct node_movie;
-struct movie;
 typedef struct node node;
-typedef struct node_movie node_movie;
-typedef struct movie movie;
 
 struct node{
     char tconst[20];
     int index;
     int level;
     node * left;
-    node * right; 
+    node * right;
 };
 
-struct node_movie{
-    struct movie *movie;   // Ponteiro para o filme vizinho
-    struct node_movie *next;     // Ponteiro para o próximo nó na lista
-};
-
-struct movie{
-    char nconst[20];
-	char name[20];
-	node_movie *neighbors;
-};
 //////////////////////////////////////////////////
 
 int get_weight(node * n){
@@ -123,11 +110,7 @@ void insert_node(node ** n, node * m){
         *n = m;
         return;
     }
-    m->index = m->index+1;
-    int result = strcmp(m->tconst, (*n)->tconst);
-    if(result == 0){
-        return;
-    }else if(result < 0){
+    if(m->index < (*n)->index){
         return insert_node(&(*n)->left, m);
     }else {
         return insert_node(&(*n)->right, m);
@@ -160,11 +143,11 @@ int search(node * n, const char tconst[]){
     }
 }
 
-void insert(node ** n, movie * title){
+void insert(node ** n, Title * title, int index){
     node * m = (node *) malloc(sizeof(node));
     if(m){
-        strcpy(m->tconst, title->nconst);
-        m->index = 0;
+        strcpy(m->tconst, title->tconst);
+        m->index = index;
         m->level = 0;
         m->left  = NULL;
         m->right = NULL;

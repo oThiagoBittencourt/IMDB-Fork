@@ -8,7 +8,7 @@
 typedef struct {
     char tconst[10];
     char titleType[10];
-    char originalTitle[100];
+    char originalTitle[500];
 } Title;
 
 typedef struct {
