@@ -1,5 +1,5 @@
-#ifndef DynamicActors_h
-#define DynamicActors_h
+#ifndef DYNAMICTITLES_H
+#define DYNAMICTITLES_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -48,4 +48,4 @@ void printTitle(Title title) {
     printf("Original Title: %s\n", title.originalTitle);
 }
 
-#endif
+#endif /* DYNAMICTITLES_H */
