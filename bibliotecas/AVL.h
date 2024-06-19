@@ -1,11 +1,11 @@
-#ifndef AVL_h
-#define AVL_h
+#ifndef AVL_H
+#define AVL_H
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "DynamicTitles.h"
+#include "./DynamicTitles.h"
 
 struct node;
 typedef struct node node;
@@ -15,10 +15,8 @@ struct node{
     int index;
     int level;
     node * left;
-    node * right;
+    node * right; 
 };
-
-//////////////////////////////////////////////////
 
 int get_weight(node * n){
     if(!n){
@@ -37,8 +35,6 @@ void update_level(node * n){
         n->level = max_level + 1;
     }
 }
-
-//////////////////////////////////////////////////
 
 node * rotate_left(node *, int);
 node * rotate_right(node *, int);
@@ -87,15 +83,13 @@ node *rotate_right(node * n, int weight)
 }
 
 void balance(node ** n){
-    if(*n){
+    if (*n) {
         int const weight = get_weight(*n);
-        if(weight > 1){
+        if (weight > 1) {
             *n = rotate_left(*n, weight);
-        }
-        else if(weight < -1){
+        } else if (weight < -1) {
             *n = rotate_right(*n, weight);
-        }
-        else{
+        } else {
             update_level(*n);
         }
     }
@@ -110,15 +104,13 @@ void insert_node(node ** n, node * m){
         *n = m;
         return;
     }
-    if(m->index < (*n)->index){
-        return insert_node(&(*n)->left, m);
-    }else {
-        return insert_node(&(*n)->right, m);
+    if (strcmp(m->tconst, (*n)->tconst) < 0) {
+        insert_node(&(*n)->left, m);
+    } else {
+        insert_node(&(*n)->right, m);
     }
     balance(n);
 }
-
-//////////////////////////////////////////////////
 
 void destruct(node * n){
     if(n){
@@ -151,7 +143,7 @@ void insert(node ** n, Title * title, int index){
         m->level = 0;
         m->left  = NULL;
         m->right = NULL;
-        printf("%s\n", m->tconst);
+        // printf("%s | ", m->tconst);
     }
     insert_node(n, m);
 }
