@@ -14,13 +14,13 @@ void readTSVFile(char localFile[], TitleArray *titles) {
 
         fgets(buffer, sizeof(buffer), file);
 
-        while(repeticoes < 50) { // while(!feof(file))
+        while(repeticoes < 100) { // while(!feof(file))
             if(fgets(buffer, sizeof(buffer), file)) {
                 Title tempTitle;
                 char *token = strtok(buffer, delim);
 
                 int i = 0;
-                while (i < 3) {
+                while (i < 4) {
                     switch(i) {
                         case 0:
                             strcpy(tempTitle.tconst, token);
@@ -28,7 +28,7 @@ void readTSVFile(char localFile[], TitleArray *titles) {
                         case 1:
                             strcpy(tempTitle.titleType, token);
                             break;
-                        case 2:
+                        case 3:
                             strcpy(tempTitle.originalTitle, token);
                             break;
                     }
