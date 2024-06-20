@@ -5,6 +5,7 @@
 #include "bibliotecas/DynamicTitles.h"
 #include "bibliotecas/AVL.h"
 #include "bibliotecas/ReadTSVTitle.h"
+#include "bibliotecas/AddFork.h"
 
 int main() {
     TitleArray titles;
@@ -19,7 +20,9 @@ int main() {
         insert(&n, &currentTitle, i);
     }
 
-    int response = search(n, "tt9916754");
+    addFork("TSV/name.basics.tsv", &titles, n);
+
+    int response = search(n, "tt0317248");
     printTitle(titles.array[response]);
 
     freeArray(&titles);

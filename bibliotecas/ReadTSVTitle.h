@@ -37,8 +37,10 @@ void readTSVTitle(char localFile[], TitleArray *titles) {
                     token = strtok(NULL, delim);
                     i++;
                 }
-                if(strcmp(tempTitle.titleType, "movie") == 0)
+                if(strcmp(tempTitle.titleType, "movie") == 0){
+                    tempTitle.neighbors = NULL;
                     insertArray(titles, tempTitle);
+                }
             }
         }
         fclose(file);

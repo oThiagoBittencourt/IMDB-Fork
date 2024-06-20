@@ -61,7 +61,7 @@ void printTitle(Title title) {
     printf("Neighbors:\n");
     n_node *neighbor = title.neighbors;
     while (neighbor != NULL) {
-        printf("  Neighbor tconst: %s\n", neighbor->tconst);
+        printf("\t%s\n", neighbor->tconst);
         neighbor = neighbor->nextTitle;
     }
 }
