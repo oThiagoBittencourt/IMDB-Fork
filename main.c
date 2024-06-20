@@ -19,6 +19,9 @@ int main() {
         insert(&n, &currentTitle, i);
     }
 
+    int response = search(n, "tt9916754");
+    printTitle(titles.array[response]);
+
     freeArray(&titles);
 
     return 0;

@@ -5,13 +5,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "./DynamicTitles.h"
+#include "DynamicTitles.h"
 
 struct node;
 typedef struct node node;
 
 struct node{
-    char tconst[20];
+    char tconst[10];
     int index;
     int level;
     node * left;
@@ -143,7 +143,6 @@ void insert(node ** n, Title * title, int index){
         m->level = 0;
         m->left  = NULL;
         m->right = NULL;
-        // printf("%s | ", m->tconst);
     }
     insert_node(n, m);
 }
