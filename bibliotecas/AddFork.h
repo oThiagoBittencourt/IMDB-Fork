@@ -14,11 +14,10 @@ void verifyFork(char *arrayNconst[], TitleArray *titles, node *n, int size){
         if (response != -1){
             for (int j = 0; j < size; j++){
                 if (j != i){
-                    if (search(n, arrayNconst[j]))
+                    if (search(n, arrayNconst[j]) != -1)
                         addNeighbor(&titles->array[response], arrayNconst[j]);
                 }
             }
-            // printTitle(titles->array[response]);
         }
     }
 }

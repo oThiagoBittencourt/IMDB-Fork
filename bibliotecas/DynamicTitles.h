@@ -57,7 +57,6 @@ void printTitle(Title title) {
     printf("Title Type: %s\n", title.titleType);
     printf("Original Title: %s\n", title.originalTitle);
     
-    // Print the neighbors
     printf("Neighbors:\n");
     n_node *neighbor = title.neighbors;
     while (neighbor != NULL) {

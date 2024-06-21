@@ -6,6 +6,7 @@
 #include "bibliotecas/AVL.h"
 #include "bibliotecas/ReadTSVTitle.h"
 #include "bibliotecas/AddFork.h"
+#include "bibliotecas/WriteDotFile.h"
 
 int main() {
     TitleArray titles;
@@ -22,8 +23,7 @@ int main() {
 
     addFork("TSV/name.basics.tsv", &titles, n);
 
-    int response = search(n, "tt0317248");
-    printTitle(titles.array[response]);
+    writeDotFile("movies.dot", &titles, n);
 
     freeArray(&titles);
 

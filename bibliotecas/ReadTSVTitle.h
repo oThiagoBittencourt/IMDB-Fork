@@ -30,9 +30,15 @@ void readTSVTitle(char localFile[], TitleArray *titles) {
                         case 1:
                             strcpy(tempTitle.titleType, token);
                             break;
-                        case 3:
+                        case 3:{
+                            int index_j = 0;
+                            for (int index_i = 0; token[index_i] != '\0'; index_i++) {
+                                if (token[index_i] != ',') token[index_j++] = token[index_i];
+                            }
+                            token[index_j] = '\0';
                             strcpy(tempTitle.originalTitle, token);
                             break;
+                        }
                     }
                     token = strtok(NULL, delim);
                     i++;
@@ -44,9 +50,9 @@ void readTSVTitle(char localFile[], TitleArray *titles) {
             }
         }
         fclose(file);
-    } else {
-        printf("Erro ao abrir o arquivo.\n");
     }
+    else
+        printf("Erro ao abrir o arquivo.\n");
 }
 
 #endif
